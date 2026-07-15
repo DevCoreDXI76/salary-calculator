@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* 흰 지면 + 소프트 패널 (흰 카드 on 틴트 대비 제거) */
+  --color-canvas: #ffffff;
+  --color-paper: #f5f7fa;
+  --color-line: #e8ebf0;
+  --color-line-strong: #d5dae2;
+
+  --color-ink: #191f28;
+  --color-ink-soft: #6b7684;
+  --color-ink-faint: #8b95a1;
+
+  --color-navy: #3182f6;
+  --color-navy-soft: #eaf2fe;
+  --color-accent: #3182f6;
+  --color-accent-soft: #eaf2fe;
+  --color-danger: #f04452;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-width: 0;
+    overflow-x: clip;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100vh;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* 소프트 패널: 흰 지면 위의 옅은 면 (흰 카드 대비 없음) */
+  .sheet {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    min-width: 0;
+  }
+
+  .sheet-shadow {
+    box-shadow: none;
+  }
+
+  .section-open {
+    min-width: 0;
+    padding-block: 0.25rem;
+  }
+
+  .section-rule {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .amount-text {
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+
+  .pill {
+    border-radius: 9999px;
+  }
+}
