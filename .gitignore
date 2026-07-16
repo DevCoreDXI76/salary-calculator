@@ -30,3 +30,5 @@ dist-ssr
 # Notion onboarding (local only — not on GitHub)
 .notion/
 
+# Vercel CLI local link
+.vercel
