@@ -40,6 +40,8 @@ Vercel → Project → Settings → Environment Variables:
 
 변경 후 **Redeploy** (canonical·sitemap·OG URL 반영).
 
+연간 요율·콘텐츠 갱신 루틴: [ops-maintenance.md](./ops-maintenance.md)
+
 ---
 
 ## 2. 배포 직후 스모크 테스트

@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Header from './components/Layout/Header'
 import Footer from './components/Layout/Footer'
 import ToolPageHeader from './components/Layout/ToolPageHeader'
+import SeoHead from './components/Layout/SeoHead'
 import AdSlot from './components/Layout/AdSlot'
 import InputSection from './components/SalaryCalc/InputSection'
 import ResultSection from './components/SalaryCalc/ResultSection'
@@ -15,8 +17,10 @@ import Consumption from './components/FunContent/Consumption'
 import NegotiationQuiz from './components/FunContent/NegotiationQuiz'
 import ContentHub from './components/Content/ContentHub'
 import SidebarDigest from './components/Content/SidebarDigest'
+import CookieConsent from './components/Layout/CookieConsent'
 import { useRecentCalculations } from './hooks/useRecentCalculations'
 import { calculateSalary } from './utils/taxCalculator'
+import { pathFromView, TOOL_PATHS, viewFromPath } from './lib/routes'
 
 const INITIAL_VALUES = {
   payType: 'annual',
@@ -35,8 +39,17 @@ function getMonthlyGross({ payType, amount, includesSeverance }) {
 }
 
 export default function App() {
-  const [activeView, setActiveView] = useState('salary')
+  const location = useLocation()
+  const navigate = useNavigate()
+  const activeView = viewFromPath(location.pathname)
+
   const [values, setValues] = useState(INITIAL_VALUES)
+
+  useEffect(() => {
+    if (!TOOL_PATHS.has(location.pathname)) {
+      navigate('/', { replace: true })
+    }
+  }, [location.pathname, navigate])
 
   const handleChange = (patch) => {
     setValues((prev) => ({ ...prev, ...patch }))
@@ -47,7 +60,7 @@ export default function App() {
   }
 
   const handleSelectSalary = (amount) => {
-    setActiveView('salary')
+    navigate(pathFromView('salary'))
     setValues((prev) => ({ ...prev, payType: 'annual', amount }))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -84,10 +97,9 @@ export default function App() {
         onRemove={removeEntry}
         onClear={clearAll}
       />
-      <RelatedToolsGrid activeView="salary" onNavigate={setActiveView} />
+      <RelatedToolsGrid activeView="salary" />
       <SidebarDigest />
       <AdSlot position="sidebar" size="sidebar" label="사이드 광고" />
-      <AdSlot position="sidebar" size="sidebar" label="사이드 광고 2" />
     </div>
   )
 
@@ -111,7 +123,6 @@ export default function App() {
               />
             </div>
 
-            {/* 모바일: 최근 계산 */}
             <div className="xl:hidden">
               <RecentCalculations
                 entries={entries}
@@ -134,7 +145,8 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen min-w-0 flex-col bg-canvas">
-      <Header activeView={activeView} onNavigate={setActiveView} />
+      <SeoHead view={activeView} />
+      <Header activeView={activeView} />
 
       <main className="mx-auto w-full min-w-0 max-w-6xl flex-1 px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         <div className="mb-6 flex w-full min-w-0 justify-center sm:mb-8">
@@ -160,9 +172,8 @@ export default function App() {
                 salarySidebar
               ) : (
                 <>
-                  <RelatedToolsGrid activeView={activeView} onNavigate={setActiveView} />
+                  <RelatedToolsGrid activeView={activeView} />
                   <AdSlot position="sidebar" size="sidebar" label="사이드 광고" />
-                  <AdSlot position="sidebar" size="sidebar" label="사이드 광고 2" />
                 </>
               )}
             </div>
@@ -177,6 +188,7 @@ export default function App() {
       </main>
 
       <Footer />
+      <CookieConsent />
     </div>
   )
 }

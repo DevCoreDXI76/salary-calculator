@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Lightbulb } from 'lucide-react'
 import { financialTips, FINANCIAL_TIPS_SOURCE } from '../../data/financialTips'
 
@@ -23,7 +24,12 @@ export default function FinancialTips() {
       <ul className="space-y-0">
         {visible.map((tip) => (
           <li key={tip.slug} className="border-b border-line/70 py-5 first:pt-0 last:border-0">
-            <p className="text-base font-semibold text-ink">{tip.title}</p>
+            <Link
+              to={`/tips/${tip.slug}`}
+              className="text-base font-semibold text-ink hover:text-navy hover:underline"
+            >
+              {tip.title}
+            </Link>
             <p className="mt-2 text-sm leading-relaxed break-keep text-ink-soft">{tip.summary}</p>
             <p className="mt-2 text-xs text-ink-faint">{tip.date}</p>
           </li>

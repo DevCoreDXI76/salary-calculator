@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom'
 import { Calculator, CalendarDays, PiggyBank, Wallet } from 'lucide-react'
 import { TOOL_TABS } from '../Layout/Header'
+import { pathFromView } from '../../lib/routes'
 
 const ICONS = {
   salary: Wallet,
@@ -8,11 +10,12 @@ const ICONS = {
   leave: CalendarDays,
 }
 
-export default function RelatedToolsGrid({ activeView = 'salary', onNavigate }) {
+export default function RelatedToolsGrid({ activeView = 'salary' }) {
+  const navigate = useNavigate()
   const tools = TOOL_TABS.filter((t) => t.id !== activeView)
 
   const go = (id) => {
-    onNavigate(id)
+    navigate(pathFromView(id))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

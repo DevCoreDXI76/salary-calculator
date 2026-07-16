@@ -1,5 +1,7 @@
-import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Menu, X } from 'lucide-react'
+import { pathFromView } from '../../lib/routes'
 
 export const TOOL_TABS = [
   { id: 'salary', label: '연봉', fullLabel: '연봉 계산기' },
@@ -10,13 +12,14 @@ export const TOOL_TABS = [
 
 /**
  * 상단 네비게이션 — 4탭 멀티툴 헤더
- * @param {{ activeView?: string, onNavigate?: (id: string) => void }} props
+ * @param {{ activeView?: string }} props
  */
-export default function Header({ activeView = 'salary', onNavigate }) {
+export default function Header({ activeView = 'salary' }) {
+  const navigate = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const go = (id) => {
-    onNavigate?.(id)
+    navigate(pathFromView(id))
     setMobileOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -24,13 +27,10 @@ export default function Header({ activeView = 'salary', onNavigate }) {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-canvas/95 backdrop-blur-md">
       <div className="mx-auto flex h-14 w-full min-w-0 max-w-6xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6 lg:px-8">
-        <a
-          href="/"
+        <Link
+          to="/"
           className="flex min-w-0 shrink-0 items-center gap-2.5"
-          onClick={(e) => {
-            e.preventDefault()
-            go('salary')
-          }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-navy text-xs font-bold text-white">
             SF
@@ -38,7 +38,7 @@ export default function Header({ activeView = 'salary', onNavigate }) {
           <span className="truncate text-base font-bold tracking-tight text-ink">
             샐러리핏
           </span>
-        </a>
+        </Link>
 
         <nav
           className="hidden min-w-0 flex-1 items-center justify-end gap-1 overflow-x-auto md:flex"

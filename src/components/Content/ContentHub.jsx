@@ -4,21 +4,7 @@ import FinancialNews from './FinancialNews'
 import CompanySalaryRank from './CompanySalaryRank'
 import DeductionBracketTable from './DeductionBracketTable'
 import AdSlot from '../Layout/AdSlot'
-
-const FAQ_ITEMS = [
-  {
-    q: '입력한 연봉 정보가 저장되나요?',
-    a: '아니요. 모든 계산은 브라우저에서만 이루어지며 서버에 저장하지 않습니다. 최근 계산은 기기 localStorage에만 저장됩니다.',
-  },
-  {
-    q: '계산 결과가 실제 급여명세서와 다른 이유는?',
-    a: '회사별 비과세·상여·추가 공제, 연말정산 구조에 따라 달라질 수 있습니다. 참고용 근사치입니다.',
-  },
-  {
-    q: '다른 계산기 탭은 어떻게 쓰나요?',
-    a: '상단 탭에서 퇴직금·실업급여·연차 계산기로 전환하면 같은 페이지에서 바로 이용할 수 있습니다.',
-  },
-]
+import { FAQ_ITEMS } from '../../data/faq'
 
 /**
  * 하단 콘텐츠 허브 — 오픈 레이아웃

@@ -8,7 +8,7 @@ export default function PolicySection() {
     <section className="space-y-0">
       <article id="privacy" className="section-open section-rule scroll-mt-20 pt-10 sm:pt-12">
         <h2 className="text-xl font-bold text-ink">개인정보 처리방침</h2>
-        <p className="mt-1.5 text-xs text-ink-faint">최종 업데이트: 2026년 7월 15일</p>
+        <p className="mt-1.5 text-xs text-ink-faint">최종 업데이트: 2026년 7월 16일</p>
         <div className="mt-5 max-w-3xl space-y-3 text-sm leading-relaxed break-keep text-ink-soft">
           <p>
             샐러리핏(SalaryFit, 이하 ‘서비스’)은 연봉 실수령액 계산을 제공하는 웹
@@ -18,14 +18,31 @@ export default function PolicySection() {
           <p>
             <strong className="text-ink">수집 항목:</strong> 원칙적으로 회원가입·이름·연락처
             등 개인 식별 정보를 수집하지 않습니다. 계산을 위해 화면에 입력된 금액·옵션은
-            해당 세션의 기기 메모리에서만 처리됩니다.
+            서버에 저장하지 않으며, 브라우저에서만 처리됩니다. 다만 최근 계산 기록은
+            이용자 기기의 <strong className="text-ink">localStorage</strong>에 저장될 수
+            있으며, 브라우저 데이터 삭제 시 함께 제거됩니다.
           </p>
           <p>
-            <strong className="text-ink">자동 수집:</strong> 안정적인 서비스 제공과 트래픽
-            파악을 위해 접속 일시, 브라우저 종류, 대략적 지역(IP 기반) 등 로그가
-            호스팅·분석 도구를 통해 수집될 수 있습니다. Google AdSense 등 광고 파트너가
-            쿠키를 사용할 수 있으며, 이용자는 브라우저 설정으로 쿠키를 거부할 수
-            있습니다.
+            <strong className="text-ink">자동 수집·분석:</strong> 안정적인 서비스 제공과
+            트래픽 파악을 위해 접속 일시, 브라우저 종류, 대략적 지역(IP 기반) 등이
+            호스팅·분석 도구를 통해 수집될 수 있습니다.{' '}
+            <strong className="text-ink">Google Analytics 4</strong>를 사용하여 페이지
+            조회·유입 경로 등을 분석하며, IP 주소는 익명화 처리됩니다.
+          </p>
+          <p>
+            <strong className="text-ink">광고·쿠키:</strong>{' '}
+            <strong className="text-ink">Google AdSense</strong>가 광고 게재를 위해 쿠키를
+            사용할 수 있으며, 관심 기반 광고에 활용될 수 있습니다. 이용자는 브라우저
+            설정 또는{' '}
+            <a
+              href="https://www.google.com/settings/ads"
+              className="text-navy hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google 광고 설정
+            </a>
+            에서 쿠키·광고 개인화를 관리할 수 있습니다.
           </p>
           <p>
             <strong className="text-ink">제3자 제공:</strong> 법령에 따른 요청이 없는 한
@@ -44,7 +61,7 @@ export default function PolicySection() {
 
       <article id="terms" className="section-open section-rule scroll-mt-20 pt-10 sm:pt-12">
         <h2 className="text-xl font-bold text-ink">이용약관</h2>
-        <p className="mt-1.5 text-xs text-ink-faint">최종 업데이트: 2026년 7월 15일</p>
+        <p className="mt-1.5 text-xs text-ink-faint">최종 업데이트: 2026년 7월 16일</p>
         <div className="mt-5 max-w-3xl space-y-3 text-sm leading-relaxed break-keep text-ink-soft">
           <p>
             본 약관은 샐러리핏 웹사이트 이용에 적용됩니다. 서비스를 이용하면 본 약관에

@@ -1,4 +1,4 @@
-/** @type {{ id: string, title: string, summary: string, date: string, category: string }[]} */
+/** @type {{ id: string, title: string, summary: string, date: string, category: string, sourceUrl: string, sourceLabel: string }[]} */
 export const financialNews = [
   {
     id: 'n1',
@@ -6,6 +6,8 @@ export const financialNews = [
     summary: '근로자·사업주 각 4.75% 부담 구조가 이어지며, 보수월액 상·하한도 함께 조정됩니다.',
     date: '2026-03-05',
     category: '4대보험',
+    sourceUrl: 'https://www.nps.or.kr',
+    sourceLabel: '국민연금공단',
   },
   {
     id: 'n2',
@@ -13,6 +15,8 @@ export const financialNews = [
     summary: '직장가입자 건강보험료는 보수월액 기준이며, 장기요양보험료는 건강보험료에 연동됩니다.',
     date: '2026-03-04',
     category: '4대보험',
+    sourceUrl: 'https://www.nhis.or.kr',
+    sourceLabel: '국민건강보험공단',
   },
   {
     id: 'n3',
@@ -20,6 +24,8 @@ export const financialNews = [
     summary: '시간당 최저임금 인상에 따라 주 40시간 기준 월급 환산액도 함께 올라갑니다. 알바·신입 채용에 영향.',
     date: '2026-02-28',
     category: '노동',
+    sourceUrl: 'https://www.moel.go.kr',
+    sourceLabel: '고용노동부',
   },
   {
     id: 'n4',
@@ -27,6 +33,8 @@ export const financialNews = [
     summary: '매년 갱신되는 간이세액표는 부양가족·자녀 공제 구조를 반영합니다. 급여 담당자는 3월 적용을 확인하세요.',
     date: '2026-02-25',
     category: '세금',
+    sourceUrl: 'https://www.nts.go.kr',
+    sourceLabel: '국세청',
   },
   {
     id: 'n5',
@@ -34,6 +42,8 @@ export const financialNews = [
     summary: '급여 외 저축 수단을 활용한 세액공제·비과세 혜택이 이직·연봉 협상과 함께 재테크 화두로 떠오르고 있습니다.',
     date: '2026-02-20',
     category: '재테크',
+    sourceUrl: 'https://www.nts.go.kr',
+    sourceLabel: '국세청',
   },
   {
     id: 'n6',
@@ -41,6 +51,8 @@ export const financialNews = [
     summary: '비자발적 퇴사 등 요건 충족 시 최대 수급기간이 정해집니다. 이직 전 가입 이력을 미리 확인하는 것이 좋습니다.',
     date: '2026-02-18',
     category: '고용',
+    sourceUrl: 'https://www.ei.go.kr',
+    sourceLabel: '고용보험 홈페이지',
   },
   {
     id: 'n7',
@@ -48,6 +60,8 @@ export const financialNews = [
     summary: '상장사 사업보고서·공시 자료를 바탕으로 업종별 평균 보수가 정리됩니다. 개인별 급여와는 차이가 있습니다.',
     date: '2026-02-12',
     category: '연봉',
+    sourceUrl: 'https://dart.fss.or.kr',
+    sourceLabel: '전자공시시스템(DART)',
   },
   {
     id: 'n8',
@@ -55,6 +69,8 @@ export const financialNews = [
     summary: '근무 시간 단축과 연동한 임금 산정 방식이 기업마다 달라, 계약 시 기본급·수당 구분 확인이 필요합니다.',
     date: '2026-02-08',
     category: '노동',
+    sourceUrl: 'https://www.moel.go.kr',
+    sourceLabel: '고용노동부',
   },
   {
     id: 'n9',
@@ -62,6 +78,8 @@ export const financialNews = [
     summary: '무주택 근로자 대상 주택 임차료 공제는 소득·나이 요건이 있습니다. 홈택스 간소화 자료를 활용하세요.',
     date: '2026-02-01',
     category: '세금',
+    sourceUrl: 'https://www.hometax.go.kr',
+    sourceLabel: '국세청 홈택스',
   },
   {
     id: 'n10',
@@ -69,7 +87,9 @@ export const financialNews = [
     summary: '퇴직금 수령 방식에 따라 세금·운용 수수료가 달라집니다. 입·퇴사 시점에 선택권을 검토하세요.',
     date: '2026-01-25',
     category: '퇴직',
+    sourceUrl: 'https://www.moel.go.kr',
+    sourceLabel: '고용노동부',
   },
 ]
 
-export const FINANCIAL_NEWS_SOURCE = '공공 금융·노동 이슈 요약 (참고용)'
+export const FINANCIAL_NEWS_SOURCE = '공식 기관 자료 링크를 포함한 요약 (참고용)'

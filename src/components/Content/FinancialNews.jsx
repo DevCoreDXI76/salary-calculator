@@ -25,6 +25,19 @@ export default function FinancialNews() {
             </div>
             <p className="mt-2 text-base font-semibold text-ink">{item.title}</p>
             <p className="mt-1.5 text-sm leading-relaxed break-keep text-ink-soft">{item.summary}</p>
+            {item.sourceUrl && (
+              <p className="mt-2 text-xs text-ink-faint">
+                출처:{' '}
+                <a
+                  href={item.sourceUrl}
+                  className="text-navy hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.sourceLabel}
+                </a>
+              </p>
+            )}
           </li>
         ))}
       </ul>
