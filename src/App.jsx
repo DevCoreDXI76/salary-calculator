@@ -158,12 +158,6 @@ export default function App() {
         <div className="grid grid-cols-1 gap-6 sm:gap-8 xl:grid-cols-[minmax(0,1fr)_280px]">
           <div className="min-w-0 space-y-6 sm:space-y-8">
             {renderTool()}
-
-            {activeView !== 'salary' && (
-              <div className="xl:hidden">
-                <AdSlot position="feed" size="feed" label="피드 광고" />
-              </div>
-            )}
           </div>
 
           <aside className="hidden min-w-0 xl:block">

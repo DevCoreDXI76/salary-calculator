@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ADSENSE_CLIENT } from '../../lib/site'
 
 const SIZE_STYLES = {
@@ -27,35 +27,63 @@ export default function AdSlot({
   label,
   className = '',
 }) {
+  const wrapRef = useRef(null)
   const insRef = useRef(null)
+  const [visible, setVisible] = useState(false)
   const displayLabel = label ?? `광고 · ${position}`
   const slotId = AD_SLOT_IDS[position] || ''
 
+  // 부모가 breakpoint에 따라 display:none 처리되는 슬롯(예: xl 미만 사이드바)은 폭이 0이라
+  // adsbygoogle.js가 "No slot size" 에러를 던진다. push()는 페이지 전체의 ins.adsbygoogle을
+  // 훑기 때문에 우리 쪽 push 타이밍만 늦춰서는 못 막고, ins 자체를 실제로 보일 때까지 DOM에서 뺀다.
   useEffect(() => {
-    if (!ADSENSE_ENABLED || !slotId || !insRef.current) return
+    if (!ADSENSE_ENABLED || !slotId || !wrapRef.current) return
+    const el = wrapRef.current
+    if (el.getBoundingClientRect().width > 0) {
+      setVisible(true)
+      return
+    }
+    const observer = new ResizeObserver((entries) => {
+      if (entries[0].contentRect.width > 0) {
+        observer.disconnect()
+        setVisible(true)
+      }
+    })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [slotId])
+
+  useEffect(() => {
+    if (!visible || !insRef.current) return
+    const el = insRef.current
+    if (el.dataset.pushed) return
+    el.dataset.pushed = 'true'
     try {
       ;(window.adsbygoogle = window.adsbygoogle || []).push({})
     } catch {
       // ignore duplicate push
     }
-  }, [slotId])
+  }, [visible])
 
   if (ADSENSE_ENABLED && slotId) {
     return (
       <aside
+        ref={wrapRef}
         className={`flex max-w-full min-w-0 items-center justify-center overflow-hidden ${SIZE_STYLES[size] ?? SIZE_STYLES.banner} ${className}`}
         aria-label={displayLabel}
         data-ad-position={position}
       >
-        <ins
-          ref={insRef}
-          className="adsbygoogle block w-full"
-          style={{ display: 'block' }}
-          data-ad-client={ADSENSE_CLIENT}
-          data-ad-slot={slotId}
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
+        {visible && (
+          <ins
+            ref={insRef}
+            className="adsbygoogle block w-full"
+            style={{ display: 'block' }}
+            data-ad-client={ADSENSE_CLIENT}
+            data-ad-slot={slotId}
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        )}
       </aside>
     )
   }
