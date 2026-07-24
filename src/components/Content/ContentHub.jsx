@@ -21,7 +21,7 @@ export default function ContentHub({ onSelectSalary }) {
       </div>
 
       <FinancialTips />
-      <FinancialNews />
+      <FinancialNews onSelectSalary={onSelectSalary} />
 
       <section id="faq" className="section-open section-rule scroll-mt-20 pt-10 sm:pt-12">
         <h2 className="mb-6 text-xl font-bold text-ink">자주 묻는 질문</h2>

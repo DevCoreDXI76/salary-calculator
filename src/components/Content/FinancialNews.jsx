@@ -1,10 +1,10 @@
-import { Newspaper } from 'lucide-react'
+import { ArrowRight, Newspaper } from 'lucide-react'
 import { financialNews, FINANCIAL_NEWS_SOURCE } from '../../data/financialNews'
 
 /**
  * 금융 뉴스 — 오픈 리스트
  */
-export default function FinancialNews() {
+export default function FinancialNews({ onSelectSalary }) {
   return (
     <section id="news" className="section-open section-rule scroll-mt-20 pt-10 sm:pt-12">
       <div className="mb-6">
@@ -37,6 +37,16 @@ export default function FinancialNews() {
                   {item.sourceLabel}
                 </a>
               </p>
+            )}
+            {onSelectSalary && item.ctaAmount && (
+              <button
+                type="button"
+                onClick={() => onSelectSalary(item.ctaAmount, item.ctaPayType ?? 'annual')}
+                className="mt-3 inline-flex items-center gap-1 rounded-full bg-navy-soft px-3 py-1.5 text-xs font-semibold text-navy hover:bg-navy-soft/70"
+              >
+                {item.ctaLabel ?? '이 금액으로 계산해보기'}
+                <ArrowRight className="h-3 w-3" />
+              </button>
             )}
           </li>
         ))}

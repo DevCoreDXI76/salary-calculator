@@ -1,5 +1,18 @@
-/** @type {{ id: string, title: string, summary: string, date: string, category: string, sourceUrl: string, sourceLabel: string }[]} */
+/** @type {{ id: string, title: string, summary: string, date: string, category: string, sourceUrl: string, sourceLabel: string, ctaAmount?: number, ctaPayType?: 'monthly' | 'annual', ctaLabel?: string }[]} */
 export const financialNews = [
+  {
+    id: 'n11',
+    title: '2027년 최저임금 시간당 10,700원 확정, 월 환산액 2,236,300원',
+    summary:
+      '최저임금위원회가 2027년 적용 최저임금을 시간당 10,700원(전년 대비 3.7% 인상)으로 의결했습니다. 주 40시간(주휴 포함 209시간) 기준 월 환산액은 2,236,300원입니다.',
+    date: '2026-07-15',
+    category: '노동',
+    sourceUrl: 'https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19659',
+    sourceLabel: '고용노동부',
+    ctaAmount: 2236300,
+    ctaPayType: 'monthly',
+    ctaLabel: '이 월급 기준으로 실수령액 계산해보기',
+  },
   {
     id: 'n1',
     title: '2026년 국민연금 보험료율 9.5% 유지',

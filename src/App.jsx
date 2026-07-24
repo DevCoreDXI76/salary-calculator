@@ -59,9 +59,9 @@ export default function App() {
     setValues((prev) => ({ ...prev, ...restored }))
   }
 
-  const handleSelectSalary = (amount) => {
+  const handleSelectSalary = (amount, payType = 'annual') => {
     navigate(pathFromView('salary'))
-    setValues((prev) => ({ ...prev, payType: 'annual', amount }))
+    setValues((prev) => ({ ...prev, payType, amount }))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
